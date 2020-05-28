@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TOOLS</title>
+  <style>
+    body {
+      align-items: flex-start;
+      display: flex;
+      flex-flow: column nowrap;
+      margin: 1vh;
+      height: 98vh;
+    }
+    #html, #css, #js {
+      height: 40vh;
+      width: 31vw;
+      font-size: 18px;
+    }
+    #frame {
+      width: 100%;
+      flex: 1 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <h2>TinyEditor</h2>
+  <button id="clear">Clear</button>
+  <div id="editor">
+    <textarea id="html" placeholder="HTML"></textarea>
+    <textarea id="css" placeholder="CSS"></textarea>
+    <textarea id="js" placeholder="JavaScript"></textarea>
+  </div>
+  <iframe id="frame"></iframe>
+  <script>
+    const lsKey = 'tinyEditor'
+    function el(id) {
+      return document.getElementById(id)
+    }
+    function handleInput() {
+      const doc = `${el('html').value}<style>${el('css').value}<\/style><script>${el('js').value}<\/script>`
+      localStorage.setItem(lsKey, JSON.stringify({
+        html: el('html').value,
+        css: el('css').value,
+        js: el('js').value
+      }))
+      el('frame').srcdoc = doc
+    }
+    function handleOnload() {
+      const lsData = JSON.parse(localStorage.getItem(lsKey))
+      if (!lsData) {
+        return
+      }
+      el('html').value = lsData.html
+      el('css').value = lsData.css
+      el('js').value = lsData.js
+    }
+    function clear() {
+      ['html', 'css', 'js'].forEach(s => el(s).value = "")
+    }
+    handleOnload()
+    handleInput()
+    el('editor').oninput = handleInput
+    el('clear').onclick = clear
+  </script>
+</body>
+</html>
