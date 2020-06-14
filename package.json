@@ -1,0 +1,11 @@
+{
+  "name": "tool-ep",
+  "private": true,
+  "scripts": {
+    "dev": "charge serve src",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@static/charge": "^1.7.0"
+  }
+}
