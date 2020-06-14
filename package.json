@@ -2,6 +2,7 @@
   "name": "tool-ep",
   "private": true,
   "scripts": {
+    "build": "charge build src public",
     "dev": "charge serve src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
