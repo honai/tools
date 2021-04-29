@@ -1,0 +1,53 @@
+---
+title: ''
+baseTitle: A Few Simple Tools
+domain: https://tools.honai.me
+---
+<% concatedTitle = title ? `${title} | ${baseTitle}` : baseTitle %>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= concatedTitle %></title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="/styles/main.css">
+  <meta property="og:url" content="<%= domain + page.url %>">
+  <meta property="og:title" content="<%= concatedTitle %>">
+  <meta property="og:description" content="">
+  <meta property="og:image" content="https://www.honai.me/images/profile.png">
+  <meta property="fb:app_id" content="1144529745735811">
+  <meta property="og:locale" content="ja_JP">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@_honai">
+</head>
+<body class="body-layout">
+  <header class="site-header">
+    <h1 class="title">
+      <a href="/" class="_r-a"><%= baseTitle %></a>
+    </h1>
+    <div class="about">
+      Author:
+      <a href="https://www.honai.me/" aria-label="Honai Ueoka" class="_r-a portfolio-link">
+        <img src="https://www.honai.me/images/profile.png" alt="Honai Ueoka's profile image" height="100%" class="picture">
+      </a>
+    </div>
+  </header>
+  <div class="nav">
+    <nav class="app-nav">
+      <div class="item">
+        <a href="/counter/" class="_r-a">文字数カウンター</a>
+      </div>
+      <div class="item">
+        <a href="/navigator-echo/" class="_r-a">Navigator Echo</a>
+      </div>
+      <div class="item">
+        <a href="/tiny-editor/" class="_r-a">Tiny Editor</a>
+      </div>
+    </nav>
+  </div>
+  <main class="app-container">
+    <%- content %>
+  </main>
+</body>
+</html>

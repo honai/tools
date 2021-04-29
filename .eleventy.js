@@ -1,7 +1,7 @@
 module.exports = (eleventyConfig) => {
-  eleventyConfig.setTemplateFormats(['html', 'md', 'pug', 'ejs', '11ty.js'])
+  eleventyConfig.setTemplateFormats(['html', 'md', 'njk', 'ejs', '11ty.js'])
 
-  const fileCopies = []
+  const fileCopies = ['favicon.ico', 'styles']
   for (const f of fileCopies) {
     eleventyConfig.addPassthroughCopy(`src/${f}`)
   }

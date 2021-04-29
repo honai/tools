@@ -1,0 +1,22 @@
+---
+layout: base.ejs
+title: 文字数カウンター
+---
+<div>
+  <h2><%= title %></h2>
+  <h3><span id="counter-number">0</span>文字</h3>
+  <textarea id="counter-input" cols="30" rows="10"></textarea>
+</div>
+<script>
+  const lsKey = 'stringCounter'
+  const countNum = document.getElementById('counter-number')
+  const countInput = document.getElementById('counter-input')
+  function count() {
+    const text = countInput.value
+    localStorage.setItem(lsKey, text)
+    countNum.textContent = text.length
+  }
+  countInput.value = localStorage.getItem(lsKey)
+  count()
+  countInput.addEventListener('input', count)
+</script>
