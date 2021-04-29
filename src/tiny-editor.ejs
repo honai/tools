@@ -1,0 +1,46 @@
+---
+layout: base.ejs
+title: TinyEditor
+---
+<h2><%= title %></h2>
+<button id="run">Run</button>
+<button id="clear">Clear</button>
+<div id="editor" class="tiny-editors">
+  <textarea id="html" placeholder="HTML"></textarea>
+  <textarea id="css" placeholder="CSS"></textarea>
+  <textarea id="js" placeholder="JavaScript"></textarea>
+</div>
+<iframe id="frame"></iframe>
+<script>
+  const lsKey = 'tinyEditor'
+  function el(id) {
+    return document.getElementById(id)
+  }
+  function handleInput() {
+    localStorage.setItem(lsKey, JSON.stringify({
+      html: el('html').value,
+      css: el('css').value,
+      js: el('js').value
+    }))
+  }
+  function handleOnload() {
+    const lsData = JSON.parse(localStorage.getItem(lsKey))
+    if (!lsData) {
+      return
+    }
+    el('html').value = lsData.html
+    el('css').value = lsData.css
+    el('js').value = lsData.js
+  }
+  function run() {
+    const doc = `${el('html').value}<style>${el('css').value}<\/style><script>${el('js').value}<\/script>`
+    el('frame').srcdoc = doc
+  }
+  function clear() {
+    ['html', 'css', 'js'].forEach(s => el(s).value = "")
+  }
+  handleOnload()
+  el('editor').addEventListener('input', handleInput)
+  el('run').addEventListener('click', run)
+  el('clear').addEventListener('click', clear)
+</script>

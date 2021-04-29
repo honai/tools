@@ -1,0 +1,22 @@
+---
+layout: base.ejs
+title: NavigatorEcho
+---
+<ul id="ul"></ul>
+<script>
+  const wrap = document.getElementById('ul')
+  function addList(text) {
+    const li = document.createElement('li')
+    li.textContent = text
+    wrap.appendChild(li)
+  }
+  let navigatorKeys = []
+  for (const key in navigator) {
+    navigatorKeys.push(key)
+  }
+  navigatorKeys.sort()
+  for (const key of navigatorKeys) {
+    const value = JSON.stringify(navigator[key])
+    addList(`${key}: ${value}`)
+  }
+</script>
