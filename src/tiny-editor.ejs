@@ -2,15 +2,19 @@
 layout: base.ejs
 title: TinyEditor
 ---
-<h2><%= title %></h2>
-<button id="run">Run</button>
-<button id="clear">Clear</button>
-<div id="editor" class="tiny-editors">
-  <textarea id="html" placeholder="HTML"></textarea>
-  <textarea id="css" placeholder="CSS"></textarea>
-  <textarea id="js" placeholder="JavaScript"></textarea>
+<div class="tiny-wrap">
+  <h2><%= title %></h2>
+  <div>
+    <button id="run">Run</button>
+    <button id="clear">Clear</button>  
+  </div>
+  <div id="editor" class="tiny-editors">
+    <textarea id="html" placeholder="HTML"></textarea>
+    <textarea id="css" placeholder="CSS"></textarea>
+    <textarea id="js" placeholder="JavaScript"></textarea>
+  </div>
+  <iframe id="frame"></iframe>
 </div>
-<iframe id="frame"></iframe>
 <script>
   const lsKey = 'tinyEditor'
   function el(id) {
