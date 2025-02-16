@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Grid for test device pixel</title>
+	<style>
+		:root, html, body {
+			margin: 0;
+			padding: 0;
+		}
+		body {
+			overflow: hidden;
+		}
+		.nav {
+			position: fixed;
+			top: 10px;
+			left: 10px;
+		}
+		.back {
+			background-color: #fff;
+		}
+	</style>
+	<script>
+		function toggleFullScreen() {
+			if (document.fullscreenElement) {
+				document.exitFullscreen();
+			} else {
+				document.documentElement.requestFullscreen();
+			}
+		}
+	</script>
+</head>
+<body>
+	<div class="nav">
+		<a href="/" class="back">Back to tools</a>
+		<button onclick="toggleFullScreen()">Toggle fullscreen</button>
+	</div>
+	<svg width="3000" height="2000" xmlns="http://www.w3.org/2000/svg">
+		<defs>
+			<pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
+			<path d="M 10 0 L 0 0 0 10" fill="none" stroke="black" stroke-width="1"/>
+			</pattern>
+			<pattern id="grid50" width="50" height="50" patternUnits="userSpaceOnUse">
+			<path d="M 50 0 L 0 0 0 50" fill="none" stroke="black" stroke-width="2"/>
+			</pattern>
+			<pattern id="grid100" width="100" height="100" patternUnits="userSpaceOnUse">
+			<path d="M 100 0 L 0 0 0 100" fill="none" stroke="black" stroke-width="3"/>
+			</pattern>
+		</defs>
+		<rect width="100%" height="100%" fill="url(#grid)"/>
+		<rect width="100%" height="100%" fill="url(#grid50)"/>
+		<rect width="100%" height="100%" fill="url(#grid100)"/>
+		<g font-family="Arial" font-size="16" fill="black">
+			<!-- x -->
+			<text x="500" y="15">500px</text>
+			<text x="1000" y="15">1000px</text>
+			<text x="1500" y="15">1500px</text>
+			<text x="2000" y="15">2000px</text>
+			<text x="2500" y="15">2500px</text>
+			<text x="3000" y="15">3000px</text>
+			<!-- y -->
+			<text x="15" y="500">500px</text>
+			<text x="15" y="1000">1000px</text>
+			<text x="15" y="1500">1500px</text>
+			<text x="15" y="2000">2000px</text>
+		</g>
+	</svg>
+</body>
+</html>
